@@ -4,7 +4,6 @@ import Home from './view/pages/Home/Home';
 
 const Routes = () => <Router>
   <Switch>
-    <Route exact path="/post/:folder/:subfolder/:post" component={Home} />
     <Route path="/" component={Home} />
   </Switch>
 </Router>

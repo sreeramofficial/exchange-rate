@@ -1,16 +1,16 @@
 {
   "projects": {
-    "default": "jsdrome",
-    "test": "jsdrome"
+    "default": "project-exchange-rate",
+    "test": "project-exchange-rate"
   },
   "targets": {
-    "jsdrome": {
+    "project-exchange-rate": {
       "hosting": {
         "prod": [
-          "jsdrome"
+          "revolut"
         ],
         "test": [
-          "jsdrome-test"
+          "project-exchange-rate"
         ]
       }
     }

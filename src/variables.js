@@ -1,11 +1,11 @@
 const list = require('./client/list');
 
 const TIMESTAMP = new Date().getTime();
-const SHORT_NAME = '<jsDrome />';
-const TITLE = '<jsDrome />';
+const SHORT_NAME = 'Exchange rate';
+const TITLE = 'Exchange rate';
 const AUTHOR = 'Sreeram Padmanabhan';
-const DESCRIPTION = 'Isomorphic PWA Boilerplate for Firebase';
-const SHORT_DESCRIPTION = 'IPWFA';
+const DESCRIPTION = 'by Sreeram Padmanabhan';
+const SHORT_DESCRIPTION = 'XR';
 const DOMAIN = "https://jsdrome.web.app"; // (without trailing slash)
 const URL = DOMAIN;
 const STAGE_URL = 'https://jsdrome-test.web.app'; // (without trailing slash)
