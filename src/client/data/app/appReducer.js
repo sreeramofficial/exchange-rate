@@ -2,19 +2,22 @@ import { handleActions, updateProperty } from '../../utils/helpers';
 import state from '../state';
 import {
   SET_MESSAGE,
-  SET_CHECKSUM,
   SET_LOADING,
-  SET_CONTENT,
+  SET_CURRENT_VAL,
+  SET_CURRENT_POCKET,
+  SET_CURRENT_DIRECTION,
 } from './appActions';
 
 const setMessage = (state, action) => updateProperty([ 'message' ], action.payload, state);
-const setChecksum = (state, action) => updateProperty([ 'checksum' ], action.payload, state);
 const setLoading = (state, action) => updateProperty([ 'loading' ], action.payload, state);
-const setContent = (state, action) => updateProperty([ 'content' ], action.payload, state);
+const setCurrentVal = (state, action) => updateProperty([ 'val' ], action.payload, state);
+const setCurrentPocket = (state, action) => updateProperty([ 'pocket' ], action.payload, state);
+const setCurrentDirection = (state, action) => updateProperty([ 'direction' ], action.payload, state);
 
 export default handleActions({
   [SET_MESSAGE]: setMessage,
-  [SET_CHECKSUM]: setChecksum,
   [SET_LOADING]: setLoading,
-  [SET_CONTENT]: setContent,
+  [SET_CURRENT_VAL]: setCurrentVal,
+  [SET_CURRENT_POCKET]: setCurrentPocket,
+  [SET_CURRENT_DIRECTION]: setCurrentDirection,
 }, state.app);

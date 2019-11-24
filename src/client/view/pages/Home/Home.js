@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import MetaTags from '../../components/MetaTags/MetaTags';
+import FullpageLoader from '../../components/FullpageLoader/FullpageLoader';
 import ExchangeRates from '../../components/ExchangeRates/ExchangeRates';
+
 import { setMessage } from '../../../data/app/appActions';
 import { getMetaTags } from '../../../utils/custom';
 
@@ -20,13 +22,14 @@ class Page extends Component {
     setMessage(null);
   }
   render() {
-    const { app: { message } } = this.props;
+    const { app: { isLoading, message } } = this.props;
     const { metaTags } = this.state;
 
     return <div>
       <MetaTags {...metaTags} />
       {message && message.message && <ErrorMessage variant={message.type} message={message.message} duration={2000} handleErrorClose={this.handleErrorClose.bind(this)} />}
-      <ExchangeRates />
+      {isLoading && <FullpageLoader />}
+      {!isLoading && <ExchangeRates />}
     </div>;
   }
 }

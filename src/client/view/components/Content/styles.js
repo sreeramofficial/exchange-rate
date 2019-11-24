@@ -2,7 +2,7 @@
 
 export default theme => ({
   root: {
-    padding: 15,
+    // padding: 15,
     wordBreak: 'break-word',
   },
   content: {

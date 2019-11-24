@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import Fab from '@material-ui/core/Fab';
-import ShareIcon from '@material-ui/icons/Share';
-import classNames from 'classnames';
+// import Hidden from '@material-ui/core/Hidden';
+// import Fab from '@material-ui/core/Fab';
+// import ShareIcon from '@material-ui/icons/Share';
+// import classNames from 'classnames';
 import { Typography } from '@material-ui/core';
 import Navbar from '../Navbar/Navbar';
 import Content from '../Content/Content';
-import Sidebar from '../Sidebar/Sidebar';
-import RightSidebar from '../RightSidebar/RightSidebar';
-import SidebarContent from '../SidebarContent/SidebarContent';
-import RightSidebarContent from '../SidebarContent/RightSidebarContent';
-import PayButton from '../PayButton/PayButton';
+// import Sidebar from '../Sidebar/Sidebar';
+// import RightSidebar from '../RightSidebar/RightSidebar';
+// import SidebarContent from '../SidebarContent/SidebarContent';
+// import RightSidebarContent from '../SidebarContent/RightSidebarContent';
+// import PayButton from '../PayButton/PayButton';
 import Toolbar from '../Toolbar/Toolbar';
-import SocialLinks from '../SocialLinks/SocialLinks';
+// import SocialLinks from '../SocialLinks/SocialLinks';
 
 import styles from './styles';
-import CopyRight from '../CopyRight/CopyRight';
+// import CopyRight from '../CopyRight/CopyRight';
 
 const { TITLE, DESCRIPTION } = require('../../../../variables');
 
@@ -47,13 +47,13 @@ class App extends Component {
   }
   render() {
     const { classes, children } = this.props;
-    const { drawerOpen } = this.state;
+    // const { drawerOpen } = this.state;
 
     return <div>
       <Navbar title={TITLE} description={DESCRIPTION} onNavbarMenuClick={this.handleDrawerToggle.bind(this)} onNavbarTitleClick={this.handleNavbarTitleClick.bind(this)} />
-      <Sidebar drawerOpen={drawerOpen} handleDrawerToggle={this.handleDrawerToggle.bind(this)}>
+      {/* <Sidebar drawerOpen={drawerOpen} handleDrawerToggle={this.handleDrawerToggle.bind(this)}>
         <SidebarContent onLinkClick={this.handleSidebarLinkClick.bind(this)} />
-      </Sidebar>
+      </Sidebar> */}
       <div className={classes.app}>
         <div className={classes.contentWrapper}>
           <Grid container spacing={0}>
@@ -63,29 +63,29 @@ class App extends Component {
                 <noscript><Typography style={{ textAlign: 'center' }} variant="h6">Please enable Javascript to continue.</Typography></noscript>
                 {children}
               </Content>
-              <Hidden smUp>
+              {/* <Hidden smUp>
                 <div style={{ margin: 10 }}>
                   <PayButton />
                   <SocialLinks />
                   <CopyRight />
                 </div>
-              </Hidden>
+              </Hidden> */}
             </Grid>
-            <Grid item sm={3} className={classes.sidebar}>
+            {/* <Grid item sm={3} className={classes.sidebar}>
               <Hidden xsDown implementation="css">
                 <RightSidebar>
                   <Toolbar />
                   <RightSidebarContent />
                 </RightSidebar>
               </Hidden>
-            </Grid>
+            </Grid> */}
           </Grid>
         </div>
       </div>
-      <Fab className={classNames(classes.fab)} color={'primary'} onClick={this.handleShareClick} aria-label="share" name="share">
+      {/* <Fab className={classNames(classes.fab)} color={'primary'} onClick={this.handleShareClick} aria-label="share" name="share">
         <span className="hidden-accessiiblity">Share</span>
         <ShareIcon />
-      </Fab>
+      </Fab> */}
     </div>;
   }
 }

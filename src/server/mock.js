@@ -28,6 +28,24 @@ app.get('/data', (req, res) => {
   res.send(file.toString());
 });
 
+app.get('/rates', (req, res) => {
+  res.send({
+    usd: 1,
+    gbp: 0.79,
+    eur: 0.91,
+    inr: 70,
+  });
+});
+
+app.get('/pockets', (req, res) => {
+  res.send({
+    usd: 100,
+    gbp: 100,
+    eur: 100,
+    inr: 100,
+  });
+});
+
 app.listen(port);
 
 // eslint-disable-next-line no-console

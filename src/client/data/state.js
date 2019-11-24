@@ -1,8 +1,12 @@
 export default {
   app: {
     message: false,
-    checksum: '',
     isLoading: false,
-    content: {},
+    val: null,
+    pocket: null,
+    direction: null,
   },
+  pockets: null,
+  inputs: null,
+  rates: null,
 };

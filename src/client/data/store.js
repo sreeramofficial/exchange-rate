@@ -4,9 +4,15 @@ import reduxMulti from './middlewares/reduxMulti';
 import state from './state';
 
 import appReducer from './app/appReducer';
+import pocketsReducer from './pockets/pocketsReducer';
+import ratesReducer from './rates/ratesReducer';
+import inputsReducer from './inputs/inputsReducer';
 
 const reducer = combineReducers({
   app: appReducer,
+  pockets: pocketsReducer,
+  rates: ratesReducer,
+  inputs: inputsReducer,
 });
 
 const middleware = applyMiddleware(thunk, reduxMulti);

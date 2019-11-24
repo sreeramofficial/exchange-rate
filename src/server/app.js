@@ -48,6 +48,22 @@ app.get('/data', (req, res) => {
   res.send(file.toString());
 });
 
+app.get('/rates', (req, res) => {
+  res.send({
+    usd: 1,
+    gbp: 0.78,
+    eur: 0.91,
+  });
+});
+
+app.get('/pockets', (req, res) => {
+  res.send({
+    usd: 100,
+    gbp: 100,
+    eur: 100,
+  });
+});
+
 app.get('**', (req, res) => {
   const sheets = new ServerStyleSheets();
   const html = ReactDOMServer.renderToString(

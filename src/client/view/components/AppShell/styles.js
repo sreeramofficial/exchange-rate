@@ -9,9 +9,9 @@ export default theme => ({
   },
   contentWrapper: {
     margin: 'auto',
-    [theme.breakpoints.up('md')]: {
-      marginLeft: 275,
-    },
+    // [theme.breakpoints.up('md')]: {
+    //   marginLeft: 275,
+    // },
   },
   content: {
     marginTop: 15,
