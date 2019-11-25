@@ -22,4 +22,20 @@ export default createMuiTheme({
     fontWeightMedium: 500,
     useNextVariants: true,
   },
+  overrides: {
+    MuiInput: {
+      underline: {
+        '&:before': {
+          borderBottom: 'none',
+        },
+      },
+    },
+    MuiInputBase: {
+      input: {
+        color: 'white',
+        fontSize: 30,
+        textAlign: 'center',
+      },
+    },
+  },
 });

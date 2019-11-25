@@ -2,9 +2,9 @@ export default {
   app: {
     message: false,
     isLoading: false,
-    val: null,
+    val: 0,
     pocket: null,
-    direction: null,
+    direction: 'from',
   },
   pockets: null,
   inputs: null,

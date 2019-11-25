@@ -1,15 +1,13 @@
+/* eslint-disable no-magic-numbers */
 import { createAction } from '../../utils/helpers';
-import { setMessage } from '../app/appActions';
+import { setMessage, setCurrentPocket } from '../app/appActions';
 import { setInputs } from '../inputs/inputsActions';
-import { setLoading } from '../app/appActions';
 
 export const SET_POCKETS = 'POCKETS::SET_POCKETS';
 
 export const setPockets = createAction(SET_POCKETS);
 
 export const getPockets = () => dispatch => {
-  dispatch(setLoading(true));
-
   fetch(`/pockets`, {
     method: 'GET',
     mode: 'cors',
@@ -25,7 +23,7 @@ export const getPockets = () => dispatch => {
       dispatch([
         setPockets(json),
         setInputs(json),
-        setLoading(false),
+        setCurrentPocket(Object.keys(json)[0]),
       ]);
     })
     .catch(() => {
@@ -34,7 +32,6 @@ export const getPockets = () => dispatch => {
           message: 'Techincal error! Reduced functionality.',
           type: 'warning',
         }),
-        setLoading(false),
       ]);
     });
 };
