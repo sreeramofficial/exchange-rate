@@ -5,22 +5,16 @@ export default {
     color: '#fff',
     display: 'grid',
   },
-  slideRow1: {
+  slideRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     flexGrow: 1,
   },
-  slideRow2: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    flexGrow: 1,
-  },
-  topSlide: {
+  slideTop: {
     background: '#2264f5',
   },
-  bottomSlide: {
+  slideBottom: {
     background: '#2b5bcf',
   },
   textInput: {

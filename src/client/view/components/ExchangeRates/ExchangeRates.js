@@ -11,7 +11,7 @@ import { Typography } from '@material-ui/core';
 import { getPockets } from '../../../data/pockets/pocketsActions';
 import { getRates } from '../../../data/rates/ratesActions';
 import { setCurrentValues } from '../../../data/app/appActions';
-import { convert } from '../../../data/inputs/inputsActions';
+// import { convert } from '../../../data/inputs/inputsActions';
 
 import { formatMoney } from '../../../utils/helpers';
 
@@ -21,6 +21,8 @@ const isWholeNum = num => num % 1 === 0;
 
 class ExchangeRates extends React.Component {
   state = {
+    indexTop: 0,
+    indexBottom: 0,
   }
   componentDidMount() {
     const { getPockets, getRates } = this.props;
@@ -28,47 +30,46 @@ class ExchangeRates extends React.Component {
     getRates();
     // window.setInterval(getRates, DELAY);
   }
-  onChangeValue = (e, pocket, direction) => {
-    const { setCurrentValues } = this.props;
-    setCurrentValues(+e.target.value, pocket, direction);
+  onChangeValue = (e, dir) => {
+    const value = +e.target.value;
+    if (isNaN(value)) return;
+
+    const { pockets, setCurrentValues } = this.props;
+    const { indexTop, indexBottom } = this.state;
+    const pocketTop = Object.keys(pockets)[indexTop];
+    const pocketBottom = Object.keys(pockets)[indexBottom];
+
+    setCurrentValues(value, pocketTop, pocketBottom, dir);
   };
-  onChangeIndexFrom = index => {
-    if (!isWholeNum(index)) return;
+  onChangeIndex = (index, dir) => {
+    if (!isWholeNum(index) || index === this.state[`index${dir}`]) return;
 
     const { setCurrentValues, app: { val }, pockets } = this.props;
-    setCurrentValues(val, Object.keys(pockets)[index], 'from');
-  };
-  onChangeIndexTo = index => {
-    if (!isWholeNum(index)) return;
 
-    const { setCurrentValues, app: { val }, pockets } = this.props;
-    setCurrentValues(val, Object.keys(pockets)[index], 'to');
-  }
+    this.setState({
+      [`index${dir}`]: index,
+    }, () => {
+      const { indexTop, indexBottom } = this.state;
+      setCurrentValues(val, Object.keys(pockets)[indexTop], Object.keys(pockets)[indexBottom], null);
+    });
+
+  };
   render() {
-    const { classes, pockets, inputs, rates, app: { pocket } } = this.props;
+    const { classes, pockets, inputs, rates } = this.props;
 
-    return pockets && inputs && rates &&
-      <Fragment>
-        <SwipeableViews onSwitching={this.onChangeIndexFrom} enableMouseEvents>
-          {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, classes.topSlide)}>
-            <div className={classes.slideRow1}>
-              <Typography variant="h2" className={classes.currencyHeading}>{pocket}</Typography>
-              <TextField id="standard-basic" label="" className={classes.textInput} onChange={e => this.onChangeValue(e, pocket, 'from')} value={inputs[pocket].from} type="text" color="white" autoFocus />
-              <Typography variant="caption">You have {formatMoney(pockets[pocket], pocket)}</Typography>
-            </div>
-          </div>)}
-        </SwipeableViews>
-        {`${formatMoney(1, pocket)} = ${formatMoney(convert(pocket, 'inr', 1, rates), 'inr')}`}
-        <SwipeableViews onSwitching={this.onChangeIndexTo} enableMouseEvents>
-          {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, classes.bottomSlide)}>
-            <div className={classes.slideRow1}>
-              <Typography variant="h2" className={classes.currencyHeading}>{pocket}</Typography>
-              <TextField id="standard-basic" label="" className={classes.textInput} onChange={e => this.onChangeValue(e, pocket, 'to')} value={inputs[pocket].to} type="text" color="white" autoFocus />
-              <Typography variant="caption">You have {formatMoney(pockets[pocket], pocket)}</Typography>
-            </div>
-          </div>)}
-        </SwipeableViews>
-      </Fragment>;
+    return pockets && inputs && rates && <Fragment>
+      {[ 'Top', 'Bottom' ].map(dir => <SwipeableViews key={dir} onSwitching={index => this.onChangeIndex(index, dir)} enableMouseEvents>
+        {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, classes[`slide${dir}`])}>
+          <div className={classes.slideRow}>
+            <Typography variant="h2" className={classes.currencyHeading}>{pocket}</Typography>
+            <TextField id="standard-basic" className={classes.textInput} onChange={e => this.onChangeValue(e, dir)} value={inputs[pocket][dir]} type="text" color="white" />
+            <Typography variant="caption"><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
+          </div>
+          <div className={classes.slideRow}>
+          </div>
+        </div>)}
+      </SwipeableViews>)}
+    </Fragment>;
   }
 }
 
@@ -76,7 +77,7 @@ const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
   getPockets: data => dispatch(getPockets(data)),
   getRates: data => dispatch(getRates(data)),
-  setCurrentValues: (val, pocket, direction) => dispatch(setCurrentValues(val, pocket, direction)),
+  setCurrentValues: (val, pocket, pocketTo, direction) => dispatch(setCurrentValues(val, pocket, pocketTo, direction)),
 });
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(ExchangeRates));

@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import { createAction } from '../../utils/helpers';
-import { setMessage, setCurrentPocket } from '../app/appActions';
+import { setMessage, setCurrentPocketTop, setCurrentPocketBottom } from '../app/appActions';
 import { setInputs } from '../inputs/inputsActions';
 
 export const SET_POCKETS = 'POCKETS::SET_POCKETS';
@@ -23,7 +23,8 @@ export const getPockets = () => dispatch => {
       dispatch([
         setPockets(json),
         setInputs(json),
-        setCurrentPocket(Object.keys(json)[0]),
+        setCurrentPocketTop(Object.keys(json)[0]),
+        setCurrentPocketBottom(Object.keys(json)[0]),
       ]);
     })
     .catch(() => {
