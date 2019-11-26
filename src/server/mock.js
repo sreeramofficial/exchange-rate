@@ -33,7 +33,7 @@ app.get('/rates', (req, res) => {
     usd: 1,
     gbp: 0.79,
     eur: 0.91,
-    inr: 70,
+    inr: [ 70, 71, 72, 73, 74, 75 ][Math.floor(Math.random() * 5) + 1],
   });
 });
 

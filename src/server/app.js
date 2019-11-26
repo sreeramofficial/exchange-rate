@@ -51,8 +51,9 @@ app.get('/data', (req, res) => {
 app.get('/rates', (req, res) => {
   res.send({
     usd: 1,
-    gbp: 0.78,
+    gbp: 0.79,
     eur: 0.91,
+    inr: [ 70, 71, 72, 73, 74, 75 ][Math.floor(Math.random() * 5) + 1],
   });
 });
 
@@ -61,6 +62,7 @@ app.get('/pockets', (req, res) => {
     usd: 100,
     gbp: 100,
     eur: 100,
+    inr: 100,
   });
 });
 

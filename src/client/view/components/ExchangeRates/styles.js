@@ -5,7 +5,7 @@ export default {
     color: '#fff',
     display: 'grid',
   },
-  slideRow: {
+  row: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -13,9 +13,14 @@ export default {
   },
   slideTop: {
     background: '#2264f5',
+    gridArea: 'a',
   },
   slideBottom: {
     background: '#2b5bcf',
+    gridArea: 'b',
+  },
+  xr: {
+    gridArea: 'c',
   },
   textInput: {
     width: 100,
@@ -23,5 +28,16 @@ export default {
   currencyHeading: {
     fontSize: 30,
     textTransform: 'uppercase',
+  },
+  container: {
+    display: 'grid',
+    gridTemplateAreas: "'a'\
+    'c'\
+    'b'",
+  },
+  button: {
+    width: 200,
+    margin: '20px auto',
+    display: 'block',
   },
 };

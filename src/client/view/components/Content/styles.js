@@ -4,6 +4,7 @@ export default theme => ({
   root: {
     // padding: 15,
     wordBreak: 'break-word',
+    background: 'transparent',
   },
   content: {
     flexGrow: 1,

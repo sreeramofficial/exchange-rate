@@ -6,6 +6,7 @@ export default {
     pocketTop: null,
     pocketBottom: null,
     direction: 'Top',
+    inputDisabled: true,
   },
   pockets: null,
   inputs: null,
