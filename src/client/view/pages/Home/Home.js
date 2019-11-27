@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import MetaTags from '../../components/MetaTags/MetaTags';
 import FullpageLoader from '../../components/FullpageLoader/FullpageLoader';
-import ExchangeRates from '../../components/ExchangeRates/ExchangeRates';
+import ExchangeRates from '../../components/ExchangeRates';
 
 import { setMessage } from '../../../data/app/appActions';
 import { getMetaTags } from '../../../utils/custom';

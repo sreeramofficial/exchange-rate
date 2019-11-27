@@ -8,7 +8,7 @@ export const SET_POCKETS = 'POCKETS::SET_POCKETS';
 export const setPockets = createAction(SET_POCKETS);
 
 export const getPockets = () => dispatch => {
-  fetch(`/pockets`, {
+  return fetch(`/pockets`, {
     method: 'GET',
     mode: 'cors',
     headers: {

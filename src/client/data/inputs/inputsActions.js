@@ -21,15 +21,15 @@ export const setInputs = pockets => dispatch => {
 };
 
 export const setConvertedInputs = () => (dispatch, getState) => {
-  const { app: { val, pocketTop, pocketBottom, direction }, pockets, inputs, rates } = getState();
+  const { app: { val, pocketTop, pocketBottom, direction }, pockets, rates } = getState();
 
-  const newInputs = { ...inputs };
+  const newInputs = {};
   const otherDirection = direction === 'Top' ? 'Bottom' : 'Top';
   for (let currency in pockets) {
+    newInputs[currency] = {};
     newInputs[currency][direction] = val;
     const from = direction === 'Top' ? pocketTop : pocketBottom;
-    const to = currency;
-    newInputs[currency][otherDirection] = convert(from, to, val, rates);
+    newInputs[currency][otherDirection] = convert(from, currency, val, rates);
   }
 
   dispatch(setInputsRoot(newInputs));

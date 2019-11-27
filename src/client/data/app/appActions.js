@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 require('isomorphic-fetch');
 import { createAction } from '../../utils/helpers';
 
@@ -10,7 +11,7 @@ export const SET_CURRENT_VAL = 'APP::SET_CURRENT_VAL';
 export const SET_CURRENT_POCKET_TOP = 'APP::SET_CURRENT_POCKET_TOP';
 export const SET_CURRENT_POCKET_BOTTOM = 'APP::SET_CURRENT_POCKET_BOTTOM';
 export const SET_CURRENT_DIRECTION = 'APP::SET_CURRENT_DIRECTION';
-export const SET_INPUT_DISABLED = 'APP::SET_INPUT_DISABLED';
+export const SET_BUTTON_DISABLED = 'APP::SET_BUTTON_DISABLED';
 
 export const setMessage = createAction(SET_MESSAGE);
 export const setLoading = createAction(SET_LOADING);
@@ -18,7 +19,7 @@ export const setCurrentVal = createAction(SET_CURRENT_VAL);
 export const setCurrentPocketTop = createAction(SET_CURRENT_POCKET_TOP);
 export const setCurrentPocketBottom = createAction(SET_CURRENT_POCKET_BOTTOM);
 export const setCurrentDirection = createAction(SET_CURRENT_DIRECTION);
-export const setInputDisabled = createAction(SET_INPUT_DISABLED);
+export const setButtonDisabled = createAction(SET_BUTTON_DISABLED);
 
 export const setValues = (val, pocketTop, pocketBottom, direction) => dispatch => {
   dispatch([
@@ -31,17 +32,17 @@ export const setValues = (val, pocketTop, pocketBottom, direction) => dispatch =
   ]);
 };
 
-const setButtonState = () => (dispatch, getState) => {
+export const setButtonState = () => (dispatch, getState) => {
   const { app: { val : transferVal, pocketTop, pocketBottom, direction }, pockets } = getState();
   const transferFrom = direction === 'Top' ? pocketTop : pocketBottom;
   const transferTo = direction === 'Top' ? pocketBottom : pocketTop;
   const pocketVal = pockets[transferFrom];
 
-  if(!transferVal || pocketVal < transferVal || transferFrom === transferTo) dispatch(setInputDisabled(true));
-  else dispatch(setInputDisabled(false));
+  if(!transferVal || pocketVal < transferVal || transferFrom === transferTo) dispatch(setButtonDisabled(true));
+  else dispatch(setButtonDisabled(false));
 };
 
-export const exchangeCurrencies = () => (dispatch, getState) => {
+export const exchangePockets = () => (dispatch, getState) => {
   const { app: { val : transferVal, pocketTop, pocketBottom, direction }, pockets, rates } = getState();
   const transferFrom = direction === 'Top' ? pocketTop : pocketBottom;
   const transferTo = direction === 'Top' ? pocketBottom : pocketTop;
@@ -53,7 +54,6 @@ export const exchangeCurrencies = () => (dispatch, getState) => {
   }
   dispatch([
     setPockets(newPockets),
-    // eslint-disable-next-line no-magic-numbers
     setValues(0, pocketTop, pocketBottom, direction),
   ]);
 };

@@ -5,7 +5,7 @@ export default {
     color: '#fff',
     display: 'grid',
   },
-  row: {
+  sliderRow: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -14,30 +14,39 @@ export default {
   slideTop: {
     background: '#2264f5',
     gridArea: 'a',
+    gridColumn: 'span 2',
   },
   slideBottom: {
-    background: '#2b5bcf',
-    gridArea: 'b',
+    background: '#1b48b4',
+    gridArea: 'd',
+    gridColumn: 'span 2',
   },
   xr: {
-    gridArea: 'c',
+    gridArea: 'b',
   },
   textInput: {
     width: 100,
   },
   currencyHeading: {
-    fontSize: 30,
     textTransform: 'uppercase',
   },
   container: {
     display: 'grid',
-    gridTemplateAreas: "'a'\
-    'c'\
-    'b'",
+    gridTemplateAreas: "'a a'\
+    'b c'\
+    'd d'",
   },
   button: {
     width: 200,
     margin: '20px auto',
     display: 'block',
+  },
+  arrow: {
+    gridArea: 'c',
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    fontWeight: 'bolder',
   },
 };
