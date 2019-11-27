@@ -6,6 +6,13 @@ export default {
     display: 'grid',
   },
   sliderRow: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  rowFlex: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',

@@ -20,6 +20,9 @@ describe('inputsActions', () => {
 
   describe('convert function', () => {
     it('Should convert usd to gbp correctly', () => {
+      expect(convert('usd', 'gbp', 0, rates)).toEqual(0);
+    });
+    it('Should convert usd to gbp correctly', () => {
       expect(convert('usd', 'gbp', 10, rates)).toEqual(5);
     });
     it('Should convert usd to inr correctly', () => {

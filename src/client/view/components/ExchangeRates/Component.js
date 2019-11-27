@@ -27,7 +27,6 @@ class ExchangeRates extends Component {
 
   onChangeValue = (e, dir) => {
     const value = e.target.value;
-    console.log(value);
     const { pockets, setValues } = this.props;
     const { indexTop, indexBottom } = this.state;
 
@@ -54,9 +53,10 @@ class ExchangeRates extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, pockets, inputs, rates } = this.props;
     const { indexTop, indexBottom } = this.state;
 
+    if (!pockets || !inputs || !rates ) return null;
     return <Fragment>
       <div className={classNames(classes.container, 'exchange')}>
         <Swiper dir={'Top'} onChangeIndex={this.onChangeIndex} onChangeValue={this.onChangeValue} {...this.props} index={indexTop} />
@@ -72,15 +72,15 @@ class ExchangeRates extends Component {
 export const isWholeNum = num => !(num % 1);
 
 export const Swiper = props => {
-  const { dir, onChangeIndex, onChangeValue, classes, pockets, inputs, index } = props;
+  const { dir, onChangeIndex, onChangeValue, classes, pockets, inputs, index, rates } = props;
 
-  if (!pockets || !inputs ) return null;
+  if (!pockets || !inputs || !rates ) return null;
   return <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classes[`slide${dir}`]} index={index} enableMouseEvents>
     {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, 'slide-container')}>
       <div className={classes.sliderRow}>
-        <Typography variant="h4" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
-        <TextField id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} value={inputs[pocket][dir]} type="text" color="white" inputProps={{ autoComplete: "off" }}/>
-        <Typography variant="h4" className={classNames(classes.balance, 'balance')}><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
+        <Typography variant="h5" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
+        <TextField variant="filled" id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} value={inputs[pocket][dir]} type="text" color="white" inputProps={{ autoComplete: "off" }}/>
+        <Typography variant="h5" className={classNames(classes.balance, 'balance')}><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
       </div>
     </div>)}
   </SwipeableViews>;
@@ -88,8 +88,9 @@ export const Swiper = props => {
 
 export const RateInfo = props => {
   const { classes, app: { pocketTop, pocketBottom }, rates } = props;
-  if (!rates) return null;
-  return <Typography variant="h6" className={classNames(classes.sliderRow, classes.xr, 'rate-info')}>
+  if(!pocketTop || !pocketBottom || !rates) return null;
+
+  return <Typography variant="h6" className={classNames(classes.rowFlex, classes.xr, 'rate-info')}>
     {`${formatMoney(1, pocketTop)} = ${formatMoney(convert(pocketTop, pocketBottom, 1, rates), pocketBottom)}`}
   </Typography>
 };

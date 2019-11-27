@@ -76,6 +76,14 @@ describe("Swiper", () => {
     expect(wrapper.find('.slide-container').length).toBe(0);
   });
 
+  it("Shoud not render if rates is null", () => {
+    const newProps = { ...props };
+    delete newProps.rates;
+
+    const wrapper = shallow(<Swiper {...newProps} />);
+    expect(wrapper.find('.slide-container').length).toBe(0);
+  });
+
   it("Shoud render a slide per pocket", () => {
     const newProps = { ...props };
 
@@ -107,13 +115,6 @@ describe("Swiper", () => {
 });
 
 describe("RateInfo", () => {
-  it("Shoud not render if rates is null", () => {
-    const newProps = { ...props };
-    delete newProps.rates;
-
-    const wrapper = shallow(<RateInfo {...newProps} />);
-    expect(wrapper.find('.rate-info').length).toBe(0);
-  });
   it("Shoud render if rates is defined", () => {
     const newProps = { ...props };
 
