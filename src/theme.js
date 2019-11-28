@@ -37,5 +37,10 @@ export default createMuiTheme({
         textAlign: 'center',
       },
     },
+    MuiFilledInput: {
+      input: {
+        padding: '18px 12px 18px',
+      },
+    },
   },
 });

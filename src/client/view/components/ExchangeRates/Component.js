@@ -15,7 +15,7 @@ const DELAY = 10000;
 class ExchangeRates extends Component {
   state = {
     indexTop: 0,
-    indexBottom: 0,
+    indexBottom: 1,
   };
 
   componentDidMount = () => {
@@ -53,13 +53,11 @@ class ExchangeRates extends Component {
 
   render() {
     const { classes, pockets, inputs, rates } = this.props;
-    const { indexTop, indexBottom } = this.state;
 
     if (!pockets || !inputs || !rates ) return null;
     return <Fragment>
       <div className={classNames(classes.container, 'exchange')}>
-        <Swiper dir={'Top'} onChangeIndex={this.onChangeIndex} onChangeValue={this.onChangeValue} {...this.props} index={indexTop} />
-        <Swiper dir={'Bottom'} onChangeIndex={this.onChangeIndex} onChangeValue={this.onChangeValue} {...this.props} index={indexBottom} />
+        {[ 'Top', 'Bottom' ].map(dir => <Swiper key={dir} dir={dir} onChangeIndex={this.onChangeIndex} onChangeValue={this.onChangeValue} {...this.props} index={this.state[`index${dir}`]} />)}
         <RateInfo {...this.props} />
         <Arrow {...this.props} />
       </div>
@@ -77,7 +75,7 @@ export const Swiper = props => {
   return <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classes[`slide${dir}`]} index={index} enableMouseEvents>
     {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, 'slide-container')}>
       <div className={classes.sliderRow}>
-        <Typography variant="h5" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
+        <Typography variant="h4" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
         <TextField variant="filled" id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} value={inputs[pocket][dir]} type="text" color="white" inputProps={{ autoComplete: "off" }}/>
         <Typography variant="h5" className={classNames(classes.balance, 'balance')}><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
       </div>
