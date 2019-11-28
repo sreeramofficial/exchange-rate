@@ -70,10 +70,10 @@ class ExchangeRates extends Component {
 export const isWholeNum = num => !(num % 1);
 
 export const Swiper = props => {
-  const { dir, onChangeIndex, onChangeValue, classes, pockets, inputs, index, rates } = props;
+  const { dir, onChangeIndex, onChangeValue, classes, pockets, inputs, index, rates, app: { direction } } = props;
 
   if (!pockets || !inputs || !rates ) return null;
-  return <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classes[`slide${dir}`]} index={index} enableMouseEvents>
+  return <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classNames(classes[`slide${dir}`], direction === dir ? classes.slideFrom : classes.slideTo )} index={index} enableMouseEvents>
     {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, 'slide-container')}>
       <div className={classes.sliderRow}>
         <Typography variant="h4" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>

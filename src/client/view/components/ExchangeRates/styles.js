@@ -19,14 +19,18 @@ export default {
     flexGrow: 1,
   },
   slideTop: {
-    background: '#2264f5',
     gridArea: 'a',
     gridColumn: 'span 2',
   },
   slideBottom: {
-    background: '#1b48b4',
     gridArea: 'd',
     gridColumn: 'span 2',
+  },
+  slideFrom: {
+    background: '#1b48b4',
+  },
+  slideTo: {
+    background: '#2264f5',
   },
   xr: {
     gridArea: 'b',
