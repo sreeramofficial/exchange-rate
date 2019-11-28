@@ -2,6 +2,7 @@
 import { createAction } from '../../utils/helpers';
 import { setMessage, setCurrentPocketTop, setCurrentPocketBottom } from '../app/appActions';
 import { setInputs } from '../inputs/inputsActions';
+import { getRates } from '../rates/ratesActions';
 
 export const SET_POCKETS = 'POCKETS::SET_POCKETS';
 
@@ -25,6 +26,7 @@ export const getPockets = () => dispatch => {
         setInputs(json),
         setCurrentPocketTop(Object.keys(json)[0]),
         setCurrentPocketBottom(Object.keys(json)[0]),
+        getRates(),
       ]);
     })
     .catch(() => {

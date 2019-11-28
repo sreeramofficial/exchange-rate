@@ -21,7 +21,6 @@ class ExchangeRates extends Component {
   componentDidMount = () => {
     const { getPockets, getRates } = this.props;
     getPockets();
-    getRates();
     window.setInterval(getRates, DELAY);
   };
 

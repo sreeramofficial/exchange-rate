@@ -8,7 +8,6 @@ export const setInputsRoot = createAction(SET_INPUTS);
 export const setInputs = pockets => dispatch => {
 
   const data = {};
-
   for(let pocket in pockets) {
     data[pocket] = {
       Top: 0,

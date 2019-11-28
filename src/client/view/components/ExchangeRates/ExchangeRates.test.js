@@ -12,11 +12,9 @@ const mockStore = configureMockStore();
 const store = mockStore({});
 
 const getPockets = sinon.stub();
-const getRates = sinon.stub();
 
 const props = {
   getPockets,
-  getRates,
   app: {
     pocketTop: 'usd',
     pocketBottom: 'gbp',
@@ -55,7 +53,6 @@ describe("ExchangeRate Component", () => {
     const newProps = { ...props };
     const wrapper = mount(<ExchangeRate {...newProps} />);
     expect(getPockets.calledOnce).toBe(true);
-    expect(getRates.calledOnce).toBe(true);
   });
 });
 
