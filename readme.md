@@ -2,7 +2,7 @@
 
 &nbsp;
 
-# What is <jsDrome />?
+# What is jsDrome?
 
 &nbsp;
 
