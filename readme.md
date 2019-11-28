@@ -2,11 +2,19 @@
 
 &nbsp;
 
+# Whats this about?
+
+&nbsp;
+
+An exchange rate client-server app. This assumes the user has 4 pockets of currencies. It was built using my own boilerplate solution.
+
+To start, run `npm run dev`.
+
 # What is jsDrome?
 
 &nbsp;
 
-Some time back in 2018, I wanted to create the perfect Web App boilerplate project. So I started creating a template from scratch wth everything configured. All I required to do is change some configurables to get a full fledged website. I called it `<jsDrome />`.
+Some time back in 2018, I wanted to create the perfect Web App boilerplate project. With automated CI-CD, its rendered server side and scores as much as possible in a lighthouse test so that it can be deployed as a react-native app inside webview for android/ios. So I started creating a template from scratch wth everything configured. All I required to do is change some configurables to get a full fledged website. I called it `<jsDrome />`.
 
 Read along to learn to set it up.
 
