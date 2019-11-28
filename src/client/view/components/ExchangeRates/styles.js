@@ -33,6 +33,7 @@ export default {
   },
   textInput: {
     width: 100,
+    margin: 'auto',
   },
   currencyHeading: {
     textTransform: 'uppercase',
