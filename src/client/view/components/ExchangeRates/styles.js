@@ -30,7 +30,7 @@ export default {
     background: '#1b48b4',
   },
   slideTo: {
-    background: '#2264f5',
+    background: '#2a6cff',
   },
   xr: {
     gridArea: 'b',
