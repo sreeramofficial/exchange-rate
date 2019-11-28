@@ -62,6 +62,7 @@ class ExchangeRates extends Component {
         <Arrow {...this.props} />
       </div>
       <XButton onClick={this.onExchange} {...this.props} />
+      <Typography className={classes.note} variant="caption">Note: The value of INR changes every 10 seconds. It fluctuates between 71 and 75. Other values remain the same. {JSON.stringify(rates)}</Typography>
     </Fragment>;
   }
 }

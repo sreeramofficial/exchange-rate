@@ -56,4 +56,5 @@ export default {
     display: 'flex',
     fontWeight: 'bolder',
   },
+  note: { display: 'block', textAlign: 'center', padding: 10 },
 };
