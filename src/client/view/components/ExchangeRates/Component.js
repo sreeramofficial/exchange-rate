@@ -86,11 +86,13 @@ export const Swiper = props => {
 };
 
 export const RateInfo = props => {
-  const { classes, app: { pocketTop, pocketBottom }, rates } = props;
+  const { classes, app: { direction, pocketTop, pocketBottom }, rates } = props;
   if(!pocketTop || !pocketBottom || !rates) return null;
+  const fromDir = direction === 'Top' ? pocketTop : pocketBottom;
+  const toDir = direction === 'Top' ? pocketBottom : pocketTop;
 
   return <Typography variant="h6" className={classNames(classes.rowFlex, classes.xr, 'rate-info')}>
-    {`${formatMoney(1, pocketTop)} = ${formatMoney(convert(pocketTop, pocketBottom, 1, rates), pocketBottom)}`}
+    {`${formatMoney(1, fromDir)} = ${formatMoney(convert(fromDir, toDir, 1, rates), toDir)}`}
   </Typography>
 };
 
