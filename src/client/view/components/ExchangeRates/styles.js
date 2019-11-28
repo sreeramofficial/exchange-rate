@@ -7,7 +7,7 @@ export default {
   },
   sliderRow: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: '1fr 2fr 1fr',
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
@@ -36,7 +36,7 @@ export default {
     gridArea: 'b',
   },
   textInput: {
-    width: 100,
+    width: '100%',
     margin: 'auto',
   },
   currencyHeading: {

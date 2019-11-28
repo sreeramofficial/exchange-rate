@@ -35,6 +35,11 @@ export default createMuiTheme({
         color: 'white',
         fontSize: 30,
         textAlign: 'center',
+        '&:focus': {
+          '&::placeholder': {
+            display: 'none',
+          },
+        },
       },
     },
     MuiFilledInput: {

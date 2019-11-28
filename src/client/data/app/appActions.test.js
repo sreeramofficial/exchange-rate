@@ -10,6 +10,7 @@ import {
   setButtonDisabled,
   setButtonState,
   exchangePockets,
+  formatVal,
 } from './appActions';
 import { SET_POCKETS } from '../pockets/pocketsActions';
 
@@ -151,4 +152,46 @@ describe('App actions', () => {
     });
   });
 
+});
+
+fdescribe('formatVal', () => {
+  it('Should convert 0. to 0.00', () => {
+    expect(formatVal('0.')).toBe('0.00');
+  });
+  it('Should convert 0 to 0', () => {
+    expect(formatVal('0')).toBe('0');
+  });
+  // it('Should convert 0.0 to 0.00', () => {
+  //   expect(formatVal('0.0')).toBe('0.00');
+  // });
+  // it('Should convert 0.012 to 0.12', () => {
+  //   expect(formatVal('0.012')).toBe('0.12');
+  // });
+  // it('Should convert 0.1 to 0.10', () => {
+  //   expect(formatVal('0.1')).toBe('0.10');
+  // });
+  // it('Should convert 0.123 to 1.23', () => {
+  //   expect(formatVal('0.123')).toBe('1.23');
+  // });
+  // it('Should convert 1.2 to 1.20', () => {
+  //   expect(formatVal('1.2')).toBe('1.20');
+  // });
+  // it('Should convert 1.234 to 12.34', () => {
+  //   expect(formatVal('1.234')).toBe('12.34');
+  // });
+  // it('Should convert 12.3 to 12.30', () => {
+  //   expect(formatVal('12.3')).toBe('12.30');
+  // });
+  // it('Should convert 12.345 to 123.45', () => {
+  //   expect(formatVal('12.345')).toBe('123.45');
+  // });
+  // it('Should convert 123.4 to 123.40', () => {
+  //   expect(formatVal('123.4')).toBe('123.40');
+  // });
+  // it('Should convert 123.456 to 1234.56', () => {
+  //   expect(formatVal('123.456')).toBe('1234.56');
+  // });
+  // it('Should convert 1234.5 to 1234.50', () => {
+  //   expect(formatVal('1234.5')).toBe('1234.50');
+  // });
 });
