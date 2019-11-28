@@ -38,7 +38,7 @@ export const setButtonState = () => (dispatch, getState) => {
   const transferTo = direction === 'Top' ? pocketBottom : pocketTop;
   const pocketVal = pockets[transferFrom];
 
-  if(!transferVal || pocketVal < transferVal || transferFrom === transferTo) dispatch(setButtonDisabled(true));
+  if(!+transferVal || pocketVal < +transferVal || transferFrom === transferTo) dispatch(setButtonDisabled(true));
   else dispatch(setButtonDisabled(false));
 };
 

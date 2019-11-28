@@ -28,7 +28,7 @@ describe('App actions', () => {
     it('Should set button to disabled if transfer value is 0', () => {
       const store = mockStore({
         app: {
-          val: 0,
+          val: '0',
           pocketTop: 'usd',
           pocketBottom: 'gbp',
           direction: 'Top',
@@ -49,7 +49,7 @@ describe('App actions', () => {
     it('Should set button to disabled if transfer value is greater than pocket value', () => {
       const store = mockStore({
         app: {
-          val: 101,
+          val: '101',
           pocketTop: 'usd',
           pocketBottom: 'gbp',
           direction: 'Top',
@@ -70,7 +70,7 @@ describe('App actions', () => {
     it('Should set button to disabled if transfer currency is same as destination currency', () => {
       const store = mockStore({
         app: {
-          val: 100,
+          val: '100',
           pocketTop: 'usd',
           pocketBottom: 'usd',
           direction: 'Top',
@@ -91,7 +91,7 @@ describe('App actions', () => {
     it('Should set button to enabled if transfer value is less than or equal to pocket value', () => {
       const store = mockStore({
         app: {
-          val: 100,
+          val: '100',
           pocketTop: 'usd',
           pocketBottom: 'gbp',
           direction: 'Top',
@@ -114,7 +114,7 @@ describe('App actions', () => {
     it('Should exchange currencites correctly', () => {
       const store = mockStore({
         app: {
-          val: 10,
+          val: '10',
           pocketTop: 'usd',
           pocketBottom: 'gbp',
           direction: 'Top',
