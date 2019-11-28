@@ -19,4 +19,4 @@ export const getParameterByName = (name, url) => {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
 
-export const formatMoney = (amt, currency) => amt.toLocaleString('en-GB', { style: 'currency', currency });
+export const formatMoney = (amt, currency) => amt.toLocaleString('en-US', { style: 'currency', currency });
