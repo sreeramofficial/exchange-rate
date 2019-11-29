@@ -47,5 +47,10 @@ export default createMuiTheme({
         padding: '18px 12px 18px',
       },
     },
+    MuiMobileStepper: {
+      dotActive: {
+        backgroundColor: 'rgba(255, 255, 255, 0.75)',
+      },
+    },
   },
 });

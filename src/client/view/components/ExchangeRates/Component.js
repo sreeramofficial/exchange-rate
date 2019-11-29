@@ -7,6 +7,7 @@ import { Typography } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+import MobileStepper from '@material-ui/core/MobileStepper';
 import { convert } from '../../../data/inputs/inputsActions';
 import { formatMoney } from '../../../utils/helpers';
 
@@ -72,15 +73,25 @@ export const Swiper = props => {
   const { dir, onChangeIndex, onChangeValue, classes, pockets, inputs, index, rates, app: { direction } } = props;
 
   if (!pockets || !inputs || !rates) return null;
-  return <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classNames(classes[`slide${dir}`], direction === dir ? classes.slideFrom : classes.slideTo)} index={index} enableMouseEvents>
-    {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, 'slide-container')}>
-      <div className={classes.sliderRow}>
-        <Typography variant="h4" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
-        <TextField variant="filled" id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} placeholder={'0'} value={+inputs[pocket][dir] === 0 ? '' : inputs[pocket][dir]} type="text" color="white" inputProps={{ autoComplete: "off" }} />
-        <Typography variant="h5" className={classNames(classes.balance, 'balance')}><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
-      </div>
-    </div>)}
-  </SwipeableViews>;
+  return <Fragment>
+    <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classNames(classes[`slide${dir}`], direction === dir ? classes.slideFrom : classes.slideTo)} index={index} enableMouseEvents>
+      {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, 'slide-container')}>
+        <div className={classes.sliderRow}>
+          <Typography variant="h4" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
+          <TextField variant="filled" id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} placeholder={'0'} value={+inputs[pocket][dir] === 0 ? '' : inputs[pocket][dir]} type="text" color="white" inputProps={{ autoComplete: "off" }} />
+          <Typography variant="h5" className={classNames(classes.balance, 'balance')}><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
+        </div>
+      </div>)}
+    </SwipeableViews>
+    <MobileStepper
+      variant="dots"
+      steps={Object.keys(pockets).length}
+      position="static"
+      activeStep={index}
+      className={classes[`stepper${dir}`]}
+      nextButton={null}
+      backButton={null} />
+  </Fragment>;
 };
 
 export const RateInfo = props => {
