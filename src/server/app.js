@@ -59,10 +59,10 @@ app.get('/rates', (req, res) => {
 
 app.get('/pockets', (req, res) => {
   res.send({
-    usd: 100,
-    gbp: 100,
-    eur: 100,
-    inr: 100,
+    usd: 10,
+    gbp: 10,
+    eur: 10,
+    inr: 10,
   });
 });
 
