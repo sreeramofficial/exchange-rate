@@ -28,7 +28,7 @@ export const setConvertedInputs = () => (dispatch, getState) => {
     newInputs[currency] = {};
     newInputs[currency][direction] = val;
     const from = direction === 'Top' ? pocketTop : pocketBottom;
-    newInputs[currency][otherDirection] = convert(from, currency, val, rates);
+    newInputs[currency][otherDirection] = convert(from, currency, +val, rates);
   }
 
   dispatch(setInputsRoot(newInputs));

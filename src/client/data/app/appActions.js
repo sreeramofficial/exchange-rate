@@ -22,8 +22,7 @@ export const setCurrentDirection = createAction(SET_CURRENT_DIRECTION);
 export const setButtonDisabled = createAction(SET_BUTTON_DISABLED);
 
 export const setValues = (val, pocketTop, pocketBottom, direction) => dispatch => {
-  if (isNaN(+val)) return;
-  if (val[val.length - 1] === '.') return;
+  if (isNaN(+val) || val[val.length - 1] === '.') return;
 
   dispatch([
     setCurrentVal(formatVal(val)),
@@ -62,8 +61,7 @@ export const exchangePockets = () => (dispatch, getState) => {
 };
 
 export const formatVal = val => {
-  const a = (+val / 100).toString();
-  if(a.length === 4) return a;
-  const b = val.split('.').pop().length;
-  return (+val * Math.pow(10, b) / 100).toString();
+  if (val.toString().length === 1) return (+val / 100).toString();
+  const decimals = val.split('.').pop().length;
+  return (+val * Math.pow(10, decimals-2)).toFixed(2);
 }

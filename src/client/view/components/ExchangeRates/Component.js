@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-import React, { Component, Fragment, useState } from 'react';
+import React, { Component, Fragment } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
@@ -70,14 +70,13 @@ export const isWholeNum = num => !(num % 1);
 
 export const Swiper = props => {
   const { dir, onChangeIndex, onChangeValue, classes, pockets, inputs, index, rates, app: { direction } } = props;
-  const [ placeholder, setPlaceholder ] = useState('0');
 
   if (!pockets || !inputs || !rates) return null;
   return <SwipeableViews onSwitching={index => onChangeIndex(index, dir)} className={classNames(classes[`slide${dir}`], direction === dir ? classes.slideFrom : classes.slideTo)} index={index} enableMouseEvents>
     {Object.keys(pockets).map(pocket => <div key={pocket} className={classNames(classes.slide, 'slide-container')}>
       <div className={classes.sliderRow}>
         <Typography variant="h4" className={classNames(classes.currencyHeading, 'currency-header')}>{pocket}</Typography>
-        <TextField variant="filled" id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} onClick={() => setPlaceholder('')} placeholder={placeholder} value={inputs[pocket][dir] || ''} type="text" color="white" inputProps={{ autoComplete: "off" }} />
+        <TextField variant="filled" id="standard-basic" className={classNames(classes.textInput, 'text-input')} onChange={e => onChangeValue(e, dir)} placeholder={'0'} value={+inputs[pocket][dir] === 0 ? '' : inputs[pocket][dir]} type="text" color="white" inputProps={{ autoComplete: "off" }} />
         <Typography variant="h5" className={classNames(classes.balance, 'balance')}><b>{formatMoney(pockets[pocket], pocket)}</b></Typography>
       </div>
     </div>)}
