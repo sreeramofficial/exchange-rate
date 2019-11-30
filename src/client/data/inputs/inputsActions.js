@@ -36,5 +36,5 @@ export const setConvertedInputs = () => (dispatch, getState) => {
 
 export const convert = (fromCurr, toCurr, amt, rates) => {
   const res = rates[toCurr]/rates[fromCurr] * amt;
-  return res % 1 === 0 ? res : +res.toFixed(2);
+  return +res.toFixed(2);
 };
