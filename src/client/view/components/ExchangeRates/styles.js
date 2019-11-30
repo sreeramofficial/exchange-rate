@@ -1,7 +1,7 @@
 export default {
   slide: {
     padding: 15,
-    minHeight: 150,
+    minHeight: 100,
     color: '#fff',
     display: 'grid',
   },
@@ -34,10 +34,11 @@ export default {
   },
   stepperTop: {
     gridColumn: 'b',
-    margin: '-30px auto',
+    margin: 'auto',
     background: 'transparent',
     height: 10,
     color: 'white',
+    width: '100%',
   },
   xr: {
     gridArea: 'c',
@@ -56,9 +57,10 @@ export default {
   },
   stepperBottom: {
     gridArea: 'f',
-    margin: '-30px auto',
+    margin: 'auto',
     background: 'transparent',
     height: 10,
+    width: '100%',
   },
   slideFrom: {
     background: '#1b48b4',

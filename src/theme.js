@@ -48,6 +48,9 @@ export default createMuiTheme({
       },
     },
     MuiMobileStepper: {
+      dots: {
+        margin: 'auto',
+      },
       dotActive: {
         backgroundColor: 'rgba(255, 255, 255, 0.75)',
       },
