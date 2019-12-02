@@ -88,7 +88,7 @@ export const Swiper = props => {
       steps={Object.keys(pockets).length}
       position="static"
       activeStep={index}
-      className={classNames(direction === dir ? classes.slideFrom : classes.slideTo, classes[`stepper${dir}`])}
+      className={classNames(direction === dir ? classes.slideFrom : classes.slideTo, classes[`stepper${dir}`], classes.stepper)}
       nextButton={null}
       backButton={null} />
   </Fragment>;

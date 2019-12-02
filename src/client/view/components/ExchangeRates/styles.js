@@ -81,4 +81,7 @@ export default {
     display: 'block',
   },
   note: { display: 'block', textAlign: 'center', padding: 10 },
+  stepper: {
+    padding: '10px 0',
+  },
 };
