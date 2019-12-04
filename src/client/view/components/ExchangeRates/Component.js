@@ -71,7 +71,7 @@ class ExchangeRates extends Component {
         <Arrow {...this.props} />
       </div>
       <XButton onClick={this.onExchange} {...this.props} />
-      <Typography className={classes.note} variant="caption">Note: Best viewed in mobile layout. This demo uses a temporary exchange rate service where the value of INR changes every 10 seconds. It fluctuates between 71 and 75 on the dollar. Other values remain the same. Current rates: {JSON.stringify(rates)}</Typography>
+      <Typography className={classes.note} variant="caption">Note: There are 4 pockets with 10 of its currency. This demo uses a temporary exchange rate service where the value of INR changes every 10 seconds. It fluctuates between 71 and 75 on the dollar. Other values remain the same. Current rates: {JSON.stringify(rates)}. Also note that you cannot transfer between currencies of the same type.</Typography>
     </Fragment>;
   }
 }

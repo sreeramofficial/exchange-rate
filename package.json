@@ -27,7 +27,7 @@
     "firebase:client:test": "npm run build:client:prod && firebase use test && firebase deploy --only hosting:test",
     "firebase:client:prod": "npm run build:client:prod && firebase use default && firebase deploy --only hosting:prod",
     "deploy": "source ./.env/env.sh && npm run firebase:server:prod && npm run firebase:client:prod && npm run clean",
-    "dev": "concurrently --kill-others \"npm run build:client:devserver\" \"nodemon src/server/mock\""
+    "dev": "concurrently --kill-others \"npm run build:client:devserver\" \"node src/server/mock\""
   },
   "repository": {
     "type": "git",
