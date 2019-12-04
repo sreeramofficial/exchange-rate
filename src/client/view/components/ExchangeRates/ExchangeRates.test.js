@@ -112,6 +112,13 @@ describe("Swiper", () => {
 });
 
 describe("RateInfo", () => {
+  it("Shoud not render if rates is not defined", () => {
+    const newProps = { ...props, rates: null };
+
+    const wrapper = shallow(<RateInfo {...newProps} />);
+    expect(wrapper.find('.rate-info').length).toBe(0);
+  });
+
   it("Shoud render if rates is defined", () => {
     const newProps = { ...props };
 

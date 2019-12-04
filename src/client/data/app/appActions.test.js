@@ -47,6 +47,27 @@ describe('App actions', () => {
       expect(store.getActions()).toEqual(expectedAction);
     });
 
+    it('Should set button to disabled if transfer value is negative', () => {
+      const store = mockStore({
+        app: {
+          val: '-2.00',
+          pocketTop: 'usd',
+          pocketBottom: 'gbp',
+          direction: 'Top',
+        },
+        pockets: {
+          usd: 100,
+          gbp: 100,
+        },
+      });
+      store.dispatch(setButtonState());
+      const expectedAction = [ {
+        type: SET_BUTTON_DISABLED,
+        payload: true,
+      } ];
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+
     it('Should set button to disabled if transfer value is greater than pocket value', () => {
       const store = mockStore({
         app: {

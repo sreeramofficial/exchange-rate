@@ -11,6 +11,10 @@ import MobileStepper from '@material-ui/core/MobileStepper';
 import { convert } from '../../../data/inputs/inputsActions';
 import { formatMoney } from '../../../utils/helpers';
 
+import Button from '@material-ui/core/Button';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+
 const DELAY = 10000;
 
 class ExchangeRates extends Component {
@@ -34,17 +38,22 @@ class ExchangeRates extends Component {
   };
 
   onChangeIndex = (index, dir) => {
-    const { setValues, app: { val, direction }, pockets } = this.props;
-
     if (!isWholeNum(index) || index === this.state[`index${dir}`]) return;
 
     this.setState({
       [`index${dir}`]: index,
-    }, () => {
-      const { indexTop, indexBottom } = this.state;
-      setValues(val, Object.keys(pockets)[indexTop], Object.keys(pockets)[indexBottom], direction);
     });
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { indexTop: prevTop, indexBottom: prevBottom } = prevState;
+    const { indexTop, indexBottom } = this.state;
+    const { setValues, app: { val, direction }, pockets } = this.props;
+
+    if (indexTop !== prevTop || indexBottom !== prevBottom) {
+      setValues(val, Object.keys(pockets)[indexTop], Object.keys(pockets)[indexBottom], direction);
+    }
+  }
 
   onExchange = () => {
     const { exchangePockets } = this.props;
@@ -89,8 +98,8 @@ export const Swiper = props => {
       position="static"
       activeStep={index}
       className={classNames(direction === dir ? classes.slideFrom : classes.slideTo, classes[`stepper${dir}`], classes.stepper)}
-      nextButton={null}
-      backButton={null} />
+      nextButton={<Button size="small" onClick={() => onChangeIndex(index + 1, dir)} disabled={index === 3}>{<KeyboardArrowRight style={{ color: 'white' }} />}</Button>}
+      backButton={<Button size="small" onClick={() => onChangeIndex(index - 1, dir)} disabled={index === 0}>{<KeyboardArrowLeft style={{ color: 'white' }} />}</Button>} />
   </Fragment>;
 };
 
